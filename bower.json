@@ -1,7 +1,0 @@
-{
-  "name": "todomvc",
-  "dependencies": {
-    "jquery": "~1.10.2",
-    "bootstrap": "~2.3.0"
-  }
-}

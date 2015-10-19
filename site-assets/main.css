@@ -5,16 +5,12 @@ body {
 }
 
 body {
-	font: 15px 'Helvetica Neue', Helvetica, Arial;
+	font: 16px 'Helvetica Neue', Helvetica, Arial;
 	font-weight: 300;
 	line-height: 1.5;
 	width: auto;
-	background: #EAEAEA url('../assets/bg.png');
-	color: #4D4D4D;
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-	-o-font-smoothing: antialiased;
+	background: #fafafa;
+	color: #353535;
 	font-smoothing: antialiased;
 }
 
@@ -24,34 +20,34 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 1.2;
 	color: #000;
 }
 
 h2 {
 	margin: 10px 0;
-	font-size: 20px;
+	font-size: 24px;
 }
 
-a {
-	color: #B83F45;
-	font-weight: bold;
+a,
+.link {
+	color: #9f3c3c;
+	font-weight: 500;
+	cursor: pointer;
 }
 
-a:hover {
-	color: #787e7e;
+
+a:hover,
+.link:hover {
+	color: #431919;
+	text-decoration: underline;
 }
 
 p {
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.5;
 	font-weight: 300;
-}
-
-hr {
-	border-top: 1px dashed #C5C5C5;
-	border-bottom: 1px dashed #F7F7F7;
 }
 
 var {
@@ -66,6 +62,11 @@ header p {
 
 header nav {
 	margin-top: 20px;
+	font-size: 20px;
+}
+
+header nav a {
+	font-weight: 200;
 }
 
 header nav a:not(:last-child) {
@@ -77,13 +78,8 @@ header nav a:not(:last-child) {
 	margin-top: 70px;
 }
 
-.nav-tabs > li,
-.nav-pills > li {
-	clear: both;
-}
-
-.nav-pills {
-	margin-left: -10px;
+.logo-icon {
+	display: none;
 }
 
 .row {
@@ -122,52 +118,53 @@ header nav a:not(:last-child) {
 	left: -20px;
 }
 
-.whats-new li ul {
-	margin-left: 10px;
-}
-
-.whats-new li ul li {
-	margin-left: 20px;
+.app-lists {
+	overflow: hidden;
 }
 
 .applist {
 	list-style: none;
 	margin: 0;
-	-webkit-columns: 4;
-	-moz-columns: 4;
-	-ms-columns: 4;
-	-o-columns: 4;
-	columns: 4;
+	padding: 0;
+	font-size: 17px;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
 }
 
 .applist li {
-	white-space: nowrap;
-	padding-bottom: 20px;
+	padding: 10px 0;
+	width: 160px;
 }
 
 .applist a {
 	position: relative; /* popover */
-	-webkit-column-break-inside: avoid;
-	-moz-column-break-inside: avoid;
-	-ms-column-break-inside: avoid;
-	-o-column-break-inside: avoid;
-	column-break-inside: avoid;
 }
 
-.applist .routing::after {
+.applist-intro {
+	margin: 10px 0 10px;
+	font-style: italic;
+}
+
+.applist .routing::after,
+.applist .label,
+.legend .label {
 	content: 'R';
 	position: relative;
 	top: -3px;
 	font-size: 9px;
 	padding: 1px 3px 1px;
-	background-color: rgba(0, 0, 0, .2);
+	background-color: rgba(0, 0, 0, .1);
 	border-radius: 3px;
 	font-weight: bold;
 	line-height: 13px;
-	color: white;
+	color: #777;
 	vertical-align: middle;
 	white-space: nowrap;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .applist .labs a,
@@ -175,31 +172,15 @@ header nav a:not(:last-child) {
 	color: #582C42;
 }
 
-.applist .label,
-.legend .label {
-	position: relative;
-	top: -3px;
-	font-size: 9px;
-	padding: 1px 3px 1px;
-	background-color: rgba(0, 0, 0, .2);
-}
-
 .applist a:hover .label {
 	text-decoration: none !important;
 	color: red;
 }
 
-.applist.amd {
-	-webkit-columns: 2;
-	-moz-columns: 2;
-	-ms-columns: 2;
-	-o-columns: 2;
-	columns: 2;
-}
-
 .legend {
 	margin-top: 20px;
 	margin-left: 0;
+	padding: 0;
 	list-style-type: none;
 }
 
@@ -211,16 +192,10 @@ header nav a:not(:last-child) {
 	margin-bottom: 0;
 }
 
-.labs-example {
-	font-weight: bold;
-}
-
 .collapsed {
 	overflow: hidden;
 	max-height: 0;
-	-webkit-transition: max-height 1s;
-	-ms-transition: max-height 1s;
-	transition: max-height 1s;
+	transition: max-height 0.7s ease-out;
 }
 
 #news-expander {
@@ -229,10 +204,15 @@ header nav a:not(:last-child) {
 
 #news-expander:checked ~ .collapsed {
 	max-height: 999px;
+	transition: max-height 0.7s ease-in;
+}
+
+.credit {
+	text-align: center;
 }
 
 .credit a {
-	margin: 0 5px;
+	margin: 5px;
 	white-space: nowrap;
 }
 
@@ -320,7 +300,7 @@ header nav a:not(:last-child) {
 }
 
 .zocial.red {
-	background-color: #a82400;
+	background-color: #b12d2b;
 }
 
 .zocial.gray {
@@ -343,47 +323,33 @@ header nav a:not(:last-child) {
 
 .zocial,
 a.zocial {
+	background: #f4f4f4;
 	border: 1px solid #777;
 	border-color: rgba(0, 0, 0, 0.2);
 	border-bottom-color: #333;
 	border-bottom-color: rgba(0, 0, 0, 0.4);
 	color: white;
-	box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.3),
-				inset 0 0 0.1em rgba(255, 255, 255, 0.9),
-				0 1px 3px rgba(0, 0, 0, 0.3);
 	cursor: pointer;
 	display: inline-block;
-	font: bold 100%/2.1 "Helvetica Neue", Helvetica, Arial;
-	padding: 5px 10px;
+	padding: 6px 10px;
 	text-align: center;
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-	-moz-user-select: none;
 	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 	position: relative;
 	border-radius: .3em;
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .05) 49%, rgba(0, 0, 0, .05) 51%, rgba(0, 0, 0, .1));
-	background-image: -ms-linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .05) 49%, rgba(0, 0, 0, .05) 51%, rgba(0, 0, 0, .1));
-	background-image: linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .05) 49%, rgba(0, 0, 0, .05) 51%, rgba(0, 0, 0, .1));
 }
 
 @media (max-width: 480px) {
-	body .applist {
-		-webkit-columns: auto !important;
-		-moz-columns: auto !important;
-		-ms-columns: auto !important;
-		-o-columns: auto !important;
-		columns: auto !important;
-	}
-
 	.credit a {
 		display: block;
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
 	h2 {
 		margin-top: 20px;
 	}
@@ -399,29 +365,13 @@ a.zocial {
 		margin-top: 0;
 	}
 
-	.logo-icon {
-		display: none;
-	}
-
 	.container {
 		margin: auto;
 	}
-
-	.applist {
-		-webkit-columns: 2 !important;
-		-moz-columns: 2 !important;
-		-ms-columns: 2 !important;
-		-o-columns: 2 !important;
-		columns: 2 !important;
-	}
 }
 
-@media (max-width: 980px) {
-	.applist {
-		-webkit-columns: 3;
-		-moz-columns: 3;
-		-ms-columns: 3;
-		-o-columns: 3;
-		columns: 3;
+@media (min-width: 992px) {
+	.logo-icon {
+		display: block;
 	}
 }
